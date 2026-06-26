@@ -53,7 +53,7 @@ usuarios = set()
 
 TEXTO_BOAS_VINDAS = (
     "😈 S4F4DINH4S MAKABRAS⁺¹⁸ 🔞\n\n"
-    "⚠️ Mano vamos liberar pra vc acesso aqueles conteúdos q vc não acha em NENHUM lugar.𝐬𝐮𝐛𝐦𝐮𝐧𝐝𝐨 𝐝𝐨 𝐭𝐞𝐥𝐞𝐠𝐫𝐚𝐦. ⁺¹⁸ ⬇️🐷temos:--𝙑𝙄‌𝘿𝙀𝙊𝙎 𝘼𝘽𝙎𝙐𝙍𝘿𝙊𝙎 𝘾𝙈 𝙎𝘼𝙉𝙏𝙄𝙉𝙃𝘼𝙎 𝙀 𝙎𝘼𝙁𝘼𝘿𝘼𝙎--🚫𝗨𝗡𝗜𝗩𝗘𝗥𝗦𝗜𝗧𝗔𝗥𝗜𝗔𝗦, 𝗣𝗥𝗢𝗙𝗘𝗦𝗦𝗢𝗥𝗘𝗦 𝗖𝗢𝗠 𝗔𝗟𝗨𝗡𝗔𝗦⁺¹⁸ 📚🚫𝗜𝗡𝗖𝗘𝗦𝗧𝗢 𝗦𝗨𝗝𝗢𝗦 𝗥𝗘𝗔𝗜𝗦⁺¹⁸ 🐷 🚫𝗦𝗨𝗥𝗨𝗕𝗔 𝗲𝗻𝘁𝗿𝗲 𝗣𝗥𝗜𝗠𝗢𝗦 𝗘 𝗜𝗥𝗠𝗔𝗢𝗦⁺¹⁸ 🦊🚫𝗣𝗨𝗡𝗛𝗘𝗧𝗔 𝗚𝗨𝗜𝗔𝗗𝗔 𝗔𝗧𝗘 𝗩𝗖 𝗚𝗢𝗭𝗔𝗥 💦🚫𝗣𝗔𝗜𝗗𝗥𝗔𝗦𝗧𝗢 𝗙𝗨𝗗𝗘𝗡𝗗𝗢 𝗔 𝗙𝗙𝗹𝗟_H𝗔⁺¹⁸ 😱🚫𝗠𝗔𝗘 𝗠𝗔𝗦𝗧𝗨𝗥𝗕𝗔𝗡𝗗𝗢 𝗙𝗹𝗟_H𝗢⁺¹⁸ 🍆👹𝗩𝗜𝗣 𝗖𝗢𝗠 𝟲𝟳𝟱,𝟴𝟳𝟱 𝗠𝗜𝗟𝗟 𝗠𝗶𝗗𝗜𝗔𝗦 𝗥𝗔𝗥𝗢𝗦⁺¹⁸ 🔐 ➕ 𝔼 𝕞𝕦𝕚𝕥𝕠 𝕞𝕒𝕚𝕤 ... 🤫🙈𝗕𝗼𝗻𝘂𝘀 𝘃𝗶𝘁𝗮𝗹𝗶𝗰𝗶𝗼: Ⓜ️ 9.7T.B no link do ega ❌🚨 (𝘀𝗲𝗺 𝘀𝗲𝗻𝗵𝗮 𝗱𝗲 𝗮𝗰𝗲𝘀𝘀𝗼)🤫 𝘚𝘪𝘨𝘪𝘭𝘰 𝘵𝘰𝘵𝘢𝘭, 𝗚𝗥𝗨𝗣𝗢 𝘢 𝘱𝘳𝘰𝘷𝘢 𝘥𝘦 𝘲𝘶𝘦𝘥𝘢𝘴. 𝘛𝘖𝘋𝘖𝘚 𝘰𝘴 𝘤𝘰𝘯𝘦ú𝘥𝘰𝘴 𝘦𝘯𝘷𝘪𝘢𝘥𝘰𝘴 𝘴ã𝘰 100% 𝘙𝘌𝘈𝘐𝘚⁺¹⁸ ✅ temos atualizações diárias ⬇️😈 𝗘𝗡𝗧𝗥𝗘 𝗡𝗔 𝗦𝗔𝗟𝗔 𝗔𝗚𝗢𝗥𝗔⁺¹⁸ 😈⬇️"
+    "⚠️ Mano vamos liberar pra vc acesso aqueles conteúdos q vc não acha em NENHUM lugar.𝐬𝐮𝐛𝐦𝐮𝐧𝐝𝐨 𝐝𝐨 𝐭𝐞𝐥𝐞𝐠𝐫𝐚𝐦. ⁺¹⁸ ⬇️🐷temos:--𝙑𝙄‌𝘿𝙀𝙊𝙎 𝘼𝘽𝙎𝙐𝙍𝘿𝙊𝙎 𝘾𝙈 𝙎𝘼𝙉𝙏𝙄𝙉𝙃𝘼𝙎 𝙀 𝙎𝘼𝙁𝘼𝘿𝘈𝙎--🚫𝗨𝗡𝗜𝗩𝗘𝗥𝗦𝗜𝗧𝗔𝗥𝗜𝗔𝗦, 𝗣𝗥𝗢𝗙𝗘𝗦𝗦𝗢𝗥𝗘𝗦 𝗖𝗢𝗠 𝗔𝗟𝗨𝗡𝗔𝗦⁺¹⁸ 📚🚫𝗜𝗡𝗖𝗘𝗦𝗧𝗢 𝗦𝗨𝗝𝗢𝗦 𝗥𝗘𝗔𝗜𝗦⁺¹⁸ 🐷 🚫𝗦𝗨𝗥𝗨𝗕𝗔 𝗲𝗻𝘁𝗿𝗲 𝗣𝗥𝗜𝗠𝗢𝗦 𝗘 𝗜𝗥𝗠𝗔𝗢𝗦⁺¹⁸ 🦊🚫𝗣𝗨𝗡𝗛𝗘𝗧𝗔 𝗚𝗨𝗜𝗔𝗗𝗔 𝗔𝗧𝗘 𝗩𝗖 𝗚𝗢𝗭𝗔𝗥 💦🚫𝗣𝗔𝗜𝗗𝗥𝗔𝗦𝗧𝗢 𝗙𝗨𝗗𝗘𝗡𝗗𝗢 𝗔 𝗙𝗙𝗹𝗟_H𝗔⁺¹⁸ 😱🚫𝗠𝗔𝗘 𝗠𝗔𝗦𝗧𝗨𝗥𝗕𝗔𝗡𝗗𝗢 𝗙𝗹𝗟_H𝗢⁺¹⁸ 🍆👹𝗩𝗜𝗣 𝗖𝗢𝗠 𝟲𝟳𝟱,𝟴𝟳𝟱 𝗠𝗜𝗟𝗟 𝗠𝗶𝗗𝗜𝗔𝗦 𝗥𝗔𝗥𝗢𝗦⁺¹⁸ 🔐 ➕ 𝔼 𝕞𝕦𝕚𝕥𝕠 𝕞𝕒𝕚𝕤 ... 🤫🙈𝗕𝗼𝗻𝘂𝘀 𝘃𝗶𝘁𝗮𝗹𝗶𝗰𝗶𝗼: Ⓜ️ 9.7T.B no link do ega ❌🚨 (𝘀𝗲𝗺 𝘀𝗲𝗻𝗵𝗮 𝗱𝗲 𝗮𝗰𝗲𝘀𝘀𝗼)🤫 𝘚𝘪𝘨𝘪𝘭𝘰 𝘵𝘰𝘵𝘢𝘭, 𝗚𝗥𝗨𝗣𝗢 𝘢 𝘱𝘳𝘰𝘷𝘢 𝘥𝘦 𝘲𝘶𝘦𝘥𝘢𝘴. 𝘛𝘖𝘋𝘖𝘚 𝘰𝘴 𝘤𝘰𝘯𝘦ú𝘥𝘰𝘴 𝘦𝘯𝘷𝘪𝘢𝘥𝘰𝘴 𝘴ã𝘰 100% 𝘙𝘌𝘈𝘐𝘚⁺¹⁸ ✅ temos atualizações diárias ⬇️😈 𝗘𝗡𝗧𝗥𝗘 𝗡𝗔 𝗦𝗔𝗟𝗔 𝗔𝗚𝗢𝗥𝗔⁺¹⁸ 😈⬇️"
 )
 
 TEXTO_REENVIO = (
@@ -341,4 +341,19 @@ def liberar_acesso(message):
         bot.send_message(message.chat.id, f"❌ Erro ao enviar: {e}")
 
 print("✅ Bot iniciado com sucesso!")
-bot.infinity_polling(timeout=20, long_polling_timeout=20, skip_pending=True)
+
+# Polling com tratamento de erro para evitar crash em conflitos
+while True:
+    try:
+        bot.infinity_polling(timeout=20, long_polling_timeout=20, skip_pending=True)
+    except telebot.apihelper.ApiTelegramException as e:
+        if "409" in str(e) and "Conflict" in str(e):
+            print("⚠️ Conflito detectado. Reconectando em 1 segundo...")
+            time.sleep(1)
+        else:
+            print(f"❌ Erro na API do Telegram: {e}")
+            time.sleep(1)
+    except Exception as e:
+        print(f"❌ Erro inesperado: {e}")
+        time.sleep(1)
+
