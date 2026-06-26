@@ -348,12 +348,12 @@ while True:
         bot.infinity_polling(timeout=20, long_polling_timeout=20, skip_pending=True)
     except telebot.apihelper.ApiTelegramException as e:
         if "409" in str(e) and "Conflict" in str(e):
-            print("⚠️ Conflito detectado (outra instância rodando). Aguardando 5 segundos...")
-            time.sleep(5)
+            print("⚠️ Conflito detectado. Reconectando em 1 segundo...")
+            time.sleep(1)
         else:
             print(f"❌ Erro na API do Telegram: {e}")
-            time.sleep(5)
+            time.sleep(1)
     except Exception as e:
         print(f"❌ Erro inesperado: {e}")
-        time.sleep(5)
+        time.sleep(1)
 
