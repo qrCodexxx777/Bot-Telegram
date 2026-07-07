@@ -341,4 +341,6 @@ def liberar_acesso(message):
         bot.send_message(message.chat.id, f"❌ Erro ao enviar: {e}")
 
 print("✅ Bot iniciado com sucesso!")
+bot.remove_webhook()
+time.sleep(1)
 bot.infinity_polling(timeout=20, long_polling_timeout=20, skip_pending=True)
