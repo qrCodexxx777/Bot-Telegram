@@ -4,7 +4,6 @@ import certifi
 import threading
 import time
 import re
-import json
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 import requests
 
@@ -20,40 +19,10 @@ apihelper.SESSION = session
 
 PASTA = os.path.dirname(os.path.abspath(__file__))
 
-# ============================================================
-# CACHE PERSISTENTE DE file_id (sobrevive a restarts do bot)
-# ============================================================
-CACHE_FILE = os.path.join(PASTA, "file_ids.json")
-
-def carregar_file_ids():
-    if os.path.exists(CACHE_FILE):
-        try:
-            with open(CACHE_FILE, "r") as f:
-                return json.load(f)
-        except Exception as e:
-            print(f"⚠️ Erro ao ler cache de file_ids: {e}")
-    return {}
-
-def salvar_file_id_disco(chave, file_id):
-    ids = carregar_file_ids()
-    ids[chave] = file_id
-    try:
-        with open(CACHE_FILE, "w") as f:
-            json.dump(ids, f)
-    except Exception as e:
-        print(f"⚠️ Erro ao salvar cache de file_ids: {e}")
-
-_cache_ids = carregar_file_ids()
-
-VIDEO1_FILE_ID = _cache_ids.get("video1")
-VIDEO2_FILE_ID = _cache_ids.get("video2")
-VIDEO3_FILE_ID = _cache_ids.get("video3")
-VIDEO4_FILE_ID = _cache_ids.get("video4")
-
-print(f"📦 Cache carregado: v1={'OK' if VIDEO1_FILE_ID else '—'} "
-      f"v2={'OK' if VIDEO2_FILE_ID else '—'} "
-      f"v3={'OK' if VIDEO3_FILE_ID else '—'} "
-      f"v4={'OK' if VIDEO4_FILE_ID else '—'}")
+VIDEO1_FILE_ID = None
+VIDEO2_FILE_ID = None
+VIDEO3_FILE_ID = None
+VIDEO4_FILE_ID = None
 
 VIDEO1 = None
 VIDEO2 = None
@@ -84,7 +53,7 @@ usuarios = set()
 
 TEXTO_BOAS_VINDAS = (
     "😈 S4F4DINH4S MAKABRAS⁺¹⁸ 🔞\n\n"
-    "⚠️ Mano vamos liberar pra vc acesso aqueles conteúdos q vc não acha em NENHUM lugar.𝐬𝐮𝐛𝐦𝐮𝐧𝐝𝐨 𝐝𝐨 𝐭𝐞𝐥𝐞𝐠𝐫𝐚𝐦. ⁺¹⁸ ⬇️🐷temos:--𝙑𝙄‌𝘿𝙀𝙊𝙎 𝘼𝘽𝙎𝙐𝙍𝘿𝙊𝙎 𝘾𝙈 𝙎𝘼𝙉𝙏𝙄𝙉𝙃𝘼𝙎 𝙀 𝙎𝘼𝙁𝘼𝘿𝘼𝙎--🚫𝗨𝗡𝗜𝗩𝗘𝗥𝗦𝗜𝗧𝗔𝗥𝗜𝗔𝗦, 𝗣𝗥𝗢𝗙𝗘𝗦𝗦𝗢𝗥𝗘𝗦 𝗖𝗢𝗠 𝗔𝗟𝗨𝗡𝗔𝗦⁺¹⁸ 📚🚫𝗜𝗡𝗖𝗘𝗦𝗧𝗢 𝗦𝗨𝗝𝗢𝗦 𝗥𝗘𝗔𝗜𝗦⁺¹⁸ 🐷 🚫𝗦𝗨𝗥𝗨𝗕𝗔 𝗲𝗻𝘁𝗿𝗲 𝗣𝗥𝗜𝗠𝗢𝗦 𝗘 𝗜𝗥𝗠𝗔𝗢𝗦⁺¹⁸ 🦊🚫𝗣𝗨𝗡𝗛𝗘𝗧𝗔 𝗚𝗨𝗜𝗔𝗗𝗔 𝗔𝗧𝗘 𝗩𝗖 𝗚𝗢𝗭𝗔𝗥 💦🚫𝗣𝗔𝗜𝗗𝗥𝗔𝗦𝗧𝗢 𝗙𝗨𝗗𝗘𝗡𝗗𝗢 𝗔 𝗙𝗙𝗹𝗟_H𝗔⁺¹⁸ 😱🚫𝗠𝗔𝗘 𝗠𝗔𝗦𝗧𝗨𝗥𝗕𝗔𝗡𝗗𝗢 𝗙𝗹𝗟_H𝗢⁺¹⁸ 🍆👹𝗩𝗜𝗣 𝗖𝗢𝗠 𝟲𝟳𝟱,𝟴𝟳𝟱 𝗠𝗜𝗟𝗟 𝗠𝗶𝗱𝗶𝗮𝗦 𝗥𝗔𝗥𝗢𝗦⁺¹⁸ 🔐 ➕ 𝔼 𝕞𝕦𝕚𝕥𝕠 𝕞𝕒𝕚𝕤 ... 🤫🙈𝗕𝗼𝗻𝘂𝘀 𝘃𝗶𝘵𝗮𝗹𝗶𝗰𝗶𝗼: Ⓜ️ 9.7T.B no link do ega ❌🚨 (𝘀𝗲𝗺 𝘀𝗲𝗻𝗵𝗮 𝗱𝗲 𝗮𝗰𝗲𝘀𝘀𝗼)🤫 𝘚𝘪𝘨𝘪𝘭𝘰 𝘵𝘰𝘵𝘢𝘭, 𝗚𝗥𝗨𝗣𝗢 𝘢 𝘱𝘳𝘰𝘷𝘢 𝘥𝘦 𝘲𝘶𝘦𝘥𝘢𝘴. 𝘛𝘖𝘋𝘖𝘴 𝘰𝘴 𝘤𝘰𝘯𝘦ú𝘥𝘰𝘴 𝘦𝘯𝘷𝘪𝘢𝘥𝘰𝘴 𝘴ã𝘰 100% 𝘙𝘌𝘈𝘐𝘚⁺¹⁸ ✅ temos atualizações diárias ⬇️😈 𝗘𝗡𝗧𝗥𝗘 𝗡𝗔 𝗦𝗔𝗟𝗔 𝗔𝗚𝗢𝗥𝗔⁺¹⁸ 😈⬇️"
+    "⚠️ Mano vamos liberar pra vc acesso aqueles conteúdos q vc não acha em NENHUM lugar.𝐬𝐮𝐛𝐦𝐮𝐧𝐝𝐨 𝐝𝐨 𝐭𝐞𝐥𝐞𝐠𝐫𝐚𝐦. ⁺¹⁸ ⬇️🐷temos:--𝙑𝙄‌𝘿𝙀𝙊𝙎 𝘼𝘽𝙎𝙐𝙍𝘿𝙊𝙎 𝘾𝙈 𝙎𝘼𝙉𝙏𝙄𝙉𝙃𝘼𝙎 𝙀 𝙎𝘼𝙁𝘼𝘿𝘼𝙎--🚫𝗨𝗡𝗜𝗩𝗘𝗥𝗦𝗜𝗧𝗔𝗥𝗜𝗔𝗦, 𝗣𝗥𝗢𝗙𝗘𝗦𝗦𝗢𝗥𝗘𝗦 𝗖𝗢𝗠 𝗔𝗟𝗨𝗡𝗔𝗦⁺¹⁸ 📚🚫𝗜𝗡𝗖𝗘𝗦𝗧𝗢 𝗦𝗨𝗝𝗢𝗦 𝗥𝗘𝗔𝗜𝗦⁺¹⁸ 🐷 🚫𝗦𝗨𝗥𝗨𝗕𝗔 𝗲𝗻𝘁𝗿𝗲 𝗣𝗥𝗜𝗠𝗢𝗦 𝗘 𝗜𝗥𝗠𝗔𝗢𝗦⁺¹⁸ 🦊🚫𝗣𝗨𝗡𝗛𝗘𝗧𝗔 𝗚𝗨𝗜𝗔𝗗𝗔 𝗔𝗧𝗘 𝗩𝗖 𝗚𝗢𝗭𝗔𝗥 💦🚫𝗣𝗔𝗜𝗗𝗥𝗔𝗦𝗧𝗢 𝗙𝗨𝗗𝗘𝗡𝗗𝗢 𝗔 𝗙𝗙𝗹𝗟_H𝗔⁺¹⁸ 😱🚫𝗠𝗔𝗘 𝗠𝗔𝗦𝗧𝗨𝗥𝗕𝗔𝗡𝗗𝗢 𝗙𝗹𝗟_H𝗢⁺¹⁸ 🍆👹𝗩𝗜𝗣 𝗖𝗢𝗠 𝟲𝟳𝟱,𝟴𝟳𝟱 𝗠𝗜𝗟𝗟 𝗠𝗶𝗗𝗜𝗔𝗦 𝗥𝗔𝗥𝗢𝗦⁺¹⁸ 🔐 ➕ 𝔼 𝕞𝕦𝕚𝕥𝕠 𝕞𝕒𝕚𝕤 ... 🤫🙈𝗕𝗼𝗻𝘂𝘀 𝘃𝗶𝘁𝗮𝗹𝗶𝗰𝗶𝗼: Ⓜ️ 9.7T.B no link do ega ❌🚨 (𝘀𝗲𝗺 𝘀𝗲𝗻𝗵𝗮 𝗱𝗲 𝗮𝗰𝗲𝘀𝘀𝗼)🤫 𝘚𝘪𝘨𝘪𝘭𝘰 𝘵𝘰𝘵𝘢𝘭, 𝗚𝗥𝗨𝗣𝗢 𝘢 𝘱𝘳𝘰𝘷𝘢 𝘥𝘦 𝘲𝘶𝘦𝘥𝘢𝘴. 𝘛𝘖𝘋𝘖𝘚 𝘰𝘴 𝘤𝘰𝘯𝘦ú𝘥𝘰𝘴 𝘦𝘯𝘷𝘪𝘢𝘥𝘰𝘴 𝘴ã𝘰 100% 𝘙𝘌𝘈𝘐𝘚⁺¹⁸ ✅ temos atualizações diárias ⬇️😈 𝗘𝗡𝗧𝗥𝗘 𝗡𝗔 𝗦𝗔𝗟𝗔 𝗔𝗚𝗢𝗥𝗔⁺¹⁸ 😈⬇️"
 )
 
 TEXTO_REENVIO = (
@@ -202,31 +171,19 @@ def _enviar_video(chat_id, file_id_ref, caminho, caption, reply_markup=None):
 
 def enviar_video1(chat_id, caption, reply_markup=None):
     global VIDEO1_FILE_ID
-    novo_id = _enviar_video(chat_id, VIDEO1_FILE_ID, VIDEO1, caption, reply_markup)
-    if novo_id != VIDEO1_FILE_ID:
-        salvar_file_id_disco("video1", novo_id)
-    VIDEO1_FILE_ID = novo_id
+    VIDEO1_FILE_ID = _enviar_video(chat_id, VIDEO1_FILE_ID, VIDEO1, caption, reply_markup)
 
 def enviar_video2(chat_id, caption, reply_markup=None):
     global VIDEO2_FILE_ID
-    novo_id = _enviar_video(chat_id, VIDEO2_FILE_ID, VIDEO2, caption, reply_markup)
-    if novo_id != VIDEO2_FILE_ID:
-        salvar_file_id_disco("video2", novo_id)
-    VIDEO2_FILE_ID = novo_id
+    VIDEO2_FILE_ID = _enviar_video(chat_id, VIDEO2_FILE_ID, VIDEO2, caption, reply_markup)
 
 def enviar_video3(chat_id, caption, reply_markup=None):
     global VIDEO3_FILE_ID
-    novo_id = _enviar_video(chat_id, VIDEO3_FILE_ID, VIDEO3, caption, reply_markup)
-    if novo_id != VIDEO3_FILE_ID:
-        salvar_file_id_disco("video3", novo_id)
-    VIDEO3_FILE_ID = novo_id
+    VIDEO3_FILE_ID = _enviar_video(chat_id, VIDEO3_FILE_ID, VIDEO3, caption, reply_markup)
 
 def enviar_video4(chat_id, caption, reply_markup=None):
     global VIDEO4_FILE_ID
-    novo_id = _enviar_video(chat_id, VIDEO4_FILE_ID, VIDEO4, caption, reply_markup)
-    if novo_id != VIDEO4_FILE_ID:
-        salvar_file_id_disco("video4", novo_id)
-    VIDEO4_FILE_ID = novo_id
+    VIDEO4_FILE_ID = _enviar_video(chat_id, VIDEO4_FILE_ID, VIDEO4, caption, reply_markup)
 
 def loop_reenvio():
     while True:
@@ -382,27 +339,6 @@ def liberar_acesso(message):
         bot.send_message(message.chat.id, f"✅ Link enviado para {chat_id_destino}")
     except Exception as e:
         bot.send_message(message.chat.id, f"❌ Erro ao enviar: {e}")
-
-# ============================================================
-# PRÉ-AQUECIMENTO DO CACHE (roda em background, sem travar o boot)
-# Se algum file_id ainda não existe, envia o vídeo pro admin uma vez
-# para "esquentar" o cache antes de qualquer cliente real chegar.
-# ============================================================
-def pre_aquecer_cache():
-    try:
-        if not VIDEO1_FILE_ID and VIDEO1:
-            enviar_video1(ADMIN_ID, caption="🔄 cache warmup v1")
-        if not VIDEO2_FILE_ID and VIDEO2:
-            enviar_video2(ADMIN_ID, caption="🔄 cache warmup v2")
-        if not VIDEO3_FILE_ID and VIDEO3:
-            enviar_video3(ADMIN_ID, caption="🔄 cache warmup v3")
-        if not VIDEO4_FILE_ID and VIDEO4:
-            enviar_video4(ADMIN_ID, caption="🔄 cache warmup v4")
-        print("🔥 Pré-aquecimento de cache concluído.")
-    except Exception as e:
-        print(f"⚠️ Erro no warmup: {e}")
-
-threading.Thread(target=pre_aquecer_cache, daemon=True).start()
 
 print("✅ Bot iniciado com sucesso!")
 bot.remove_webhook()
