@@ -193,12 +193,9 @@ def loop_reenvio():
         print(f"📤 Reenviando para {len(usuarios)} usuário(s)...")
         for chat_id in list(usuarios):
             try:
-                enviar_video3(chat_id, caption="")
-                enviar_video4(chat_id, caption="")
-                time.sleep(0.3)
-                bot.send_message(chat_id, TEXTO_REENVIO)
-                time.sleep(0.3)
-                bot.send_message(chat_id, "👇 Veja os pacotes disponíveis:", reply_markup=teclado_catalogo())
+                enviar_video3(chat_id, caption=TEXTO_REENVIO)
+                time.sleep(0.5)
+                enviar_video4(chat_id, caption="👇 Veja os pacotes disponíveis:", reply_markup=teclado_catalogo())
             except Exception as e:
                 print(f"Erro ao reenviar para {chat_id}: {e}")
             time.sleep(0.3)
@@ -214,52 +211,14 @@ def meu_id(message):
         parse_mode="Markdown"
     )
 
-@bot.message_handler(commands=['fileids'])
-def ver_fileids(message):
-    if message.from_user.id != ADMIN_ID:
-        return
-    bot.send_message(
-        message.chat.id,
-        f"📦 FILE IDs em cache:\n\n"
-        f"v1: {VIDEO1_FILE_ID or 'None'}\n"
-        f"v2: {VIDEO2_FILE_ID or 'None'}\n"
-        f"v3: {VIDEO3_FILE_ID or 'None'}\n"
-        f"v4: {VIDEO4_FILE_ID or 'None'}"
-    )
-
-@bot.message_handler(commands=['setfileid'])
-def set_fileid(message):
-    if message.from_user.id != ADMIN_ID:
-        return
-    global VIDEO1_FILE_ID, VIDEO2_FILE_ID, VIDEO3_FILE_ID, VIDEO4_FILE_ID
-    partes = message.text.split()
-    if len(partes) < 3:
-        bot.send_message(message.chat.id, "Uso: /setfileid <1|2|3|4> <file_id>")
-        return
-    num, fid = partes[1], partes[2]
-    if num == "1":
-        VIDEO1_FILE_ID = fid
-        salvar_file_id_disco("video1", fid)
-    elif num == "2":
-        VIDEO2_FILE_ID = fid
-        salvar_file_id_disco("video2", fid)
-    elif num == "3":
-        VIDEO3_FILE_ID = fid
-        salvar_file_id_disco("video3", fid)
-    elif num == "4":
-        VIDEO4_FILE_ID = fid
-        salvar_file_id_disco("video4", fid)
-    bot.send_message(message.chat.id, f"✅ video{num} file_id salvo!")
-
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     usuarios.add(message.chat.id)
-    threading.Thread(
-        target=enviar_video1,
-        args=(message.chat.id, TEXTO_BOAS_VINDAS),
-        kwargs={"reply_markup": teclado_catalogo()},
-        daemon=True
-    ).start()
+    enviar_video1(
+        message.chat.id,
+        caption=TEXTO_BOAS_VINDAS,
+        reply_markup=teclado_catalogo()
+    )
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("ver_"))
 def mostrar_pacote(call):
@@ -272,8 +231,6 @@ def mostrar_pacote(call):
     p = pacote
     valor_com = formatar_valor(p["valor_base"] + p["acrescimo"])
     valor_sem = formatar_valor(p["valor_base"])
-    chat_id_pacote = call.message.chat.id
-    caption_video = f"{p['emoji']} {p['nome']}"
 
     markup = InlineKeyboardMarkup(row_width=1)
     markup.add(
@@ -281,24 +238,8 @@ def mostrar_pacote(call):
         InlineKeyboardButton(f"❎ Não quero — {valor_sem}", callback_data=f"comprar_nao_{key}")
     )
 
-    def _enviar_pacote(cid, cap, mk):
-        global VIDEO2_FILE_ID
-        try:
-            if VIDEO2_FILE_ID:
-                bot.send_video(cid, VIDEO2_FILE_ID, caption=cap)
-            elif VIDEO2:
-                with open(VIDEO2, "rb") as v:
-                    resp = bot.send_video(cid, v, caption=cap, timeout=120)
-                    VIDEO2_FILE_ID = resp.video.file_id
-                    salvar_file_id_disco("video2", VIDEO2_FILE_ID)
-        except Exception as e:
-            print(f"Erro enviar_video2: {e}")
-        try:
-            bot.send_message(cid, TEXTO_PACOTE, parse_mode="Markdown", reply_markup=mk)
-        except Exception as e:
-            print(f"Erro send_message pacote: {e}")
-
-    threading.Thread(target=_enviar_pacote, args=(chat_id_pacote, caption_video, markup), daemon=True).start()
+    enviar_video2(call.message.chat.id, caption=f"{p['emoji']} *{p['nome']}*")
+    bot.send_message(call.message.chat.id, TEXTO_PACOTE, parse_mode="Markdown", reply_markup=markup)
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("comprar_sim_"))
 def pagamento_com(call):
@@ -327,7 +268,7 @@ def confirmacao(call):
     pacote = PACOTES.get(key)
     nome_pacote = pacote["nome"] if pacote else key
 
-    chat_id = call.from_user.id
+    chat_id = call.message.chat.id
     usuario = call.from_user
     nome_usuario = usuario.first_name or "Sem nome"
     username = f"@{usuario.username}" if usuario.username else "(sem username)"
@@ -400,12 +341,4 @@ def liberar_acesso(message):
         bot.send_message(message.chat.id, f"❌ Erro ao enviar: {e}")
 
 print("✅ Bot iniciado com sucesso!")
-
-while True:
-    try:
-        bot.remove_webhook()
-        time.sleep(2)
-        bot.infinity_polling(timeout=20, long_polling_timeout=20, skip_pending=True)
-    except Exception as e:
-        print(f"⚠️ Polling encerrado ({e}), reiniciando em 10s...")
-        time.sleep(10)
+bot.infinity_polling(timeout=20, long_polling_timeout=20, skip_pending=True)
