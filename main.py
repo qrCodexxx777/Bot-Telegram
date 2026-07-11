@@ -73,7 +73,7 @@ TEXTO_PACOTE = (
     "O acesso é liberado manualmente após a confirmação do pagamento, então pode levar um tempinho para processar, mas fique tranquilo que é 100% real e garantido! 🙌"
 )
 
-INTERVALO_REENVIO = 10 * 60  # 10 minutos
+INTERVALO_REENVIO = 30 * 60  # 30 minutos
 
 ADMIN_ID = 5470121122  # ✏️ Coloque seu chat_id de admin aqui (pegue com @userinfobot)
 LINK_GRUPO_FREE = "https://t.me/Vazaadiinhoos"  # ✏️ Link do grupo free
@@ -341,4 +341,4 @@ def liberar_acesso(message):
         bot.send_message(message.chat.id, f"❌ Erro ao enviar: {e}")
 
 print("✅ Bot iniciado com sucesso!")
-bot.infinity_polling(timeout=20, long_polling_timeout=20, skip_pending=True)
+bot.infinity_polling(timeout=20, long_polling_timeout=10, skip_pending=True)
