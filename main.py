@@ -53,7 +53,7 @@ usuarios = set()
 
 TEXTO_BOAS_VINDAS = (
     "😈 S4F4DINH4S MAKABRAS⁺¹⁸ 🔞\n\n"
-    "⚠️ Mano vamos liberar pra vc acesso aqueles conteúdos q vc não acha em NENHUM lugar.𝐬𝐮𝐛𝐦𝐮𝐧𝐝𝐨 𝐝𝐨 𝐭𝐞𝐥𝐞𝐠𝐫𝐚𝐦. ⁺¹⁸ ⬇️🐷temos:--𝙑𝙄‌𝘿𝙀𝙊𝙎 𝘼𝘽𝙎𝙐𝙍𝘿𝙊𝙎 𝘾𝙈 𝙎𝘼𝙉𝙏𝙄𝙉𝙃𝘼𝙎 𝙀 𝙎𝘼𝙁𝘼𝘿𝘼𝙎--🚫𝗨𝗡𝗜𝗩𝗘𝗥𝗦𝗜𝗧𝗔𝗥𝗜𝗔𝗦, 𝗣𝗥𝗢𝗙𝗘𝗦𝗦𝗢𝗥𝗘𝗦 𝗖𝗢𝗠 𝗔𝗟𝗨𝗡𝗔𝗦⁺¹⁸ 📚🚫𝗜𝗡𝗖𝗘𝗦𝗧𝗢 𝗦𝗨𝗝𝗢𝗦 𝗥𝗘𝗔𝗜𝗦⁺¹⁸ 🐷 🚫𝗦𝗨𝗥𝗨𝗕𝗔 𝗲𝗻𝘁𝗿𝗲 𝗣𝗥𝗜𝗠𝗢𝗦 𝗘 𝗜𝗥𝗠𝗔𝗢𝗦⁺¹⁸ 🦊🚫𝗣𝗨𝗡𝗛𝗘𝗧𝗔 𝗚𝗨𝗜𝗔𝗗𝗔 𝗔𝗧𝗘 𝗩𝗖 𝗚𝗢𝗭𝗔𝗥 💦🚫𝗣𝗔𝗜𝗗𝗥𝗔𝗦𝗧𝗢 𝗙𝗨𝗗𝗘𝗡𝗗𝗢 𝗔 𝗙𝗙𝗹𝗟_H𝗔⁺¹⁸ 😱🚫𝗠𝗔𝗘 𝗠𝗔𝗦𝗧𝗨𝗥𝗕𝗔𝗡𝗗𝗢 𝗙𝗹𝗟_H𝗢⁺¹⁸ 🍆👹𝗩𝗜𝗣 𝗖𝗢𝗠 𝟲𝟳𝟱,𝟴𝟳𝟱 𝗠𝗜𝗟𝗟 𝗠𝗶𝗗𝗜𝗔𝗦 𝗥𝗔𝗥𝗢𝗦⁺¹⁸ 🔐 ➕ 𝔼 𝕞𝕦𝕚𝕥𝕠 𝕞𝕒𝕚𝕤 ... 🤫🙈𝗕𝗼𝗻𝘂𝘀 𝘃𝗶𝘁𝗮𝗹𝗶𝗰𝗶𝗼: Ⓜ️ 9.7T.B no link do ega ❌🚨 (𝘀𝗲𝗺 𝘀𝗲𝗻𝗵𝗮 𝗱𝗲 𝗮𝗰𝗲𝘀𝘀𝗼)🤫 𝘚𝘪𝘨𝘪𝘭𝘰 𝘵𝘰𝘵𝘢𝘭, 𝗚𝗥𝗨𝗣𝗢 𝘢 𝘱𝘳𝘰𝘷𝘢 𝘥𝘦 𝘲𝘶𝘦𝘥𝘢𝘴. 𝘛𝘖𝘋𝘖𝘚 𝘰𝘴 𝘤𝘰𝘯𝘦ú𝘥𝘰𝘴 𝘦𝘯𝘷𝘪𝘢𝘥𝘰𝘴 𝘴ã𝘰 100% 𝘙𝘌𝘈𝘐𝘚⁺¹⁸ ✅ temos atualizações diárias ⬇️😈 𝗘𝗡𝗧𝗥𝗘 𝗡𝗔 𝗦𝗔𝗟𝗔 𝗔𝗚𝗢𝗥𝗔⁺¹⁸ 😈⬇️"
+    "⚠️ Mano vamos liberar pra vc acesso aqueles conteúdos q vc não acha em NENHUM lugar.𝐬𝐮𝐛𝐦𝐮𝐧𝐝𝐨 𝐝𝐨 𝐭𝐞𝐥𝐞𝐠𝐫𝐚𝐦. ⁺¹⁸ ⬇️🐷temos:--𝙑𝙄‌𝘿𝙀𝙊𝙎 𝘼𝘽𝙎𝙐𝙍𝘿𝙊𝙎 𝘾𝙈 𝙎𝘼𝙉𝙏𝙄𝙉𝙃𝘼𝙎 𝙀 𝙎𝘼𝙁𝘼𝘿𝘈𝙎--🚫𝗨𝗡𝗜𝗩𝗘𝗥𝗦𝗜𝗧𝗔𝗥𝗜𝗔𝗦, 𝗣𝗥𝗢𝗙𝗘𝗦𝗦𝗢𝗥𝗘𝗦 𝗖𝗢𝗠 𝗔𝗟𝗨𝗡𝗔𝗦⁺¹⁸ 📚🚫𝗜𝗡𝗖𝗘𝗦𝗧𝗢 𝗦𝗨𝗝𝗢𝗦 𝗥𝗘𝗔𝗜𝗦⁺¹⁸ 🐷 🚫𝗦𝗨𝗥𝗨𝗕𝗔 𝗲𝗻𝘁𝗿𝗲 𝗣𝗥𝗜𝗠𝗢𝗦 𝗘 𝗜𝗥𝗠𝗔𝗢𝗦⁺¹⁸ 🦊🚫𝗣𝗨𝗡𝗛𝗘𝗧𝗔 𝗚𝗨𝗜𝗔𝗗𝗔 𝗔𝗧𝗘 𝗩𝗖 𝗚𝗢𝗭𝗔𝗥 💦🚫𝗣𝗔𝗜𝗗𝗥𝗔𝗦𝗧𝗢 𝗙𝗨𝗗𝗘𝗡𝗗𝗢 𝗔 𝗙𝗙𝗹𝗟_H𝗔⁺¹⁸ 😱🚫𝗠𝗔𝗘 𝗠𝗔𝗦𝗧𝗨𝗥𝗕𝗔𝗡𝗗𝗢 𝗙𝗟𝗟_H𝗢⁺¹⁸ 🍆👹𝗩𝗜𝗣 𝗖𝗢𝗠 𝟲𝟳𝟱,𝟴𝟳𝟱 𝗠𝗜𝗟𝗟 𝗠𝗶𝗗𝗜𝗔𝗦 𝗥𝗔𝗥𝗢𝗦⁺¹⁸ 🔐 ➕ 𝔼 𝕞𝕦𝕚𝕥𝕠 𝕞𝕒𝕦𝕔𝕒 𝕞𝕒𝕖𝕟 𝕞𝕒𝕖𝕟𝕕𝕠 𝕞𝕒𝕚𝕤 ... 🤫🙈𝗕𝗼𝗻𝘂𝘀 𝘃𝗶𝘁𝗮𝗹𝗶𝗰𝗶𝗼: Ⓜ️ 9.7T.B no link do ega ❌🚨 (𝘀𝗲𝗺 𝘀𝗲𝗻𝗵𝗮 𝗱𝗲 𝗮𝗰𝗲𝘀𝘀𝗼)🤫 𝘚𝘪𝘨𝘪𝘭𝘰 𝘵𝘰𝘵𝘢𝘭, 𝗚𝗥𝗨𝗣𝗢 𝘢 𝘱𝘳𝘰𝘷𝘢 𝘥𝘦 𝘲𝘶𝘦𝘥𝘢𝘴. 𝘛𝘖𝘋𝘖𝘚 𝘰𝘴 𝘤𝘰𝘯𝘦ú𝘥𝘰𝘴 𝘦𝘯𝘷𝘪𝘢𝘥𝘰𝘴 𝘴ã𝘰 100% 𝘙𝘌𝘈𝘐𝘚⁺¹⁸ ✅ temos atualizações diárias ⬇️😈 𝗘𝗡𝗧𝗥𝗘 𝗡𝗔 𝗦𝗔𝗟𝗔 𝗔𝗚𝗢𝗥𝗔⁺¹⁸ 😈⬇️"
 )
 
 TEXTO_REENVIO = (
@@ -185,6 +185,36 @@ def enviar_video4(chat_id, caption, reply_markup=None):
     global VIDEO4_FILE_ID
     VIDEO4_FILE_ID = _enviar_video(chat_id, VIDEO4_FILE_ID, VIDEO4, caption, reply_markup)
 
+def salvar_file_id_disco(nome, file_id):
+    """Salva file_id em disco para recuperação após restart"""
+    try:
+        arquivo = os.path.join(PASTA, f"{nome}.txt")
+        with open(arquivo, "w") as f:
+            f.write(file_id)
+    except Exception as e:
+        print(f"Erro ao salvar {nome}: {e}")
+
+def carregar_file_ids_disco():
+    """Carrega file_ids salvos do disco na inicialização"""
+    global VIDEO1_FILE_ID, VIDEO2_FILE_ID, VIDEO3_FILE_ID, VIDEO4_FILE_ID
+    for i, var in enumerate([("video1", VIDEO1_FILE_ID), ("video2", VIDEO2_FILE_ID), ("video3", VIDEO3_FILE_ID), ("video4", VIDEO4_FILE_ID)], 1):
+        try:
+            arquivo = os.path.join(PASTA, f"{var[0]}.txt")
+            if os.path.exists(arquivo):
+                with open(arquivo, "r") as f:
+                    fid = f.read().strip()
+                    if i == 1:
+                        VIDEO1_FILE_ID = fid
+                    elif i == 2:
+                        VIDEO2_FILE_ID = fid
+                    elif i == 3:
+                        VIDEO3_FILE_ID = fid
+                    elif i == 4:
+                        VIDEO4_FILE_ID = fid
+                    print(f"✅ Carregado {var[0]}: {fid}")
+        except Exception as e:
+            print(f"Erro ao carregar {var[0]}: {e}")
+
 def loop_reenvio():
     while True:
         time.sleep(INTERVALO_REENVIO)
@@ -298,7 +328,11 @@ def pagamento_com(call):
         return
     markup = InlineKeyboardMarkup()
     markup.add(InlineKeyboardButton("✅ Já efetuei o pagamento", callback_data=f"pago_{key}"))
-    bot.send_message(call.message.chat.id, texto_pagamento(key, com_acrescimo=True), parse_mode="Markdown", reply_markup=markup)
+    try:
+        bot.send_message(call.message.chat.id, texto_pagamento(key, com_acrescimo=True), parse_mode="Markdown", reply_markup=markup)
+    except Exception as e:
+        print(f"Erro em pagamento_com: {e}")
+        bot.answer_callback_query(call.id, f"❌ Erro: {e}")
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("comprar_nao_"))
 def pagamento_sem(call):
@@ -308,7 +342,11 @@ def pagamento_sem(call):
         return
     markup = InlineKeyboardMarkup()
     markup.add(InlineKeyboardButton("✅ Já efetuei o pagamento", callback_data=f"pago_{key}"))
-    bot.send_message(call.message.chat.id, texto_pagamento(key, com_acrescimo=False), parse_mode="Markdown", reply_markup=markup)
+    try:
+        bot.send_message(call.message.chat.id, texto_pagamento(key, com_acrescimo=False), parse_mode="Markdown", reply_markup=markup)
+    except Exception as e:
+        print(f"Erro em pagamento_sem: {e}")
+        bot.answer_callback_query(call.id, f"❌ Erro: {e}")
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("pago_"))
 def confirmacao(call):
@@ -322,13 +360,16 @@ def confirmacao(call):
     nome_usuario = usuario.first_name or "Sem nome"
     username = f"@{usuario.username}" if usuario.username else "(sem username)"
 
-    bot.send_message(
-        chat_id,
-        "✅ *Pagamento em análise!*\n\n"
-        "Estamos confirmando seu pagamento. Assim que cair na conta, "
-        "você receberá automaticamente o link do grupo free aqui mesmo. 🙏",
-        parse_mode="Markdown"
-    )
+    try:
+        bot.send_message(
+            chat_id,
+            "✅ *Pagamento em análise!*\n\n"
+            "Estamos confirmando seu pagamento. Assim que cair na conta, "
+            "você receberá automaticamente o link do grupo free aqui mesmo. 🙏",
+            parse_mode="Markdown"
+        )
+    except Exception as e:
+        print(f"Erro ao enviar confirmação para {chat_id}: {e}")
 
     if ADMIN_ID:
         markup = InlineKeyboardMarkup()
@@ -389,7 +430,19 @@ def liberar_acesso(message):
     except Exception as e:
         bot.send_message(message.chat.id, f"❌ Erro ao enviar: {e}")
 
+# Carregar file_ids salvos antes de iniciar
+carregar_file_ids_disco()
+
 print("✅ Bot iniciado com sucesso!")
-bot.remove_webhook()
-time.sleep(1)
+
+# CORREÇÃO PARA ERRO 409: Remove webhook e aguarda antes de fazer polling
+try:
+    bot.remove_webhook()
+except Exception as e:
+    print(f"⚠️ Aviso ao remover webhook: {e}")
+
+time.sleep(2)
+
+# Inicia polling com skip_pending=True para evitar processar mensagens antigas
 bot.infinity_polling(timeout=20, long_polling_timeout=20, skip_pending=True)
+
