@@ -193,9 +193,12 @@ def loop_reenvio():
         print(f"📤 Reenviando para {len(usuarios)} usuário(s)...")
         for chat_id in list(usuarios):
             try:
-                enviar_video3(chat_id, caption=TEXTO_REENVIO)
-                time.sleep(0.5)
-                enviar_video4(chat_id, caption="👇 Veja os pacotes disponíveis:", reply_markup=teclado_catalogo())
+                enviar_video3(chat_id, caption="")
+                enviar_video4(chat_id, caption="")
+                time.sleep(0.3)
+                bot.send_message(chat_id, TEXTO_REENVIO)
+                time.sleep(0.3)
+                bot.send_message(chat_id, "👇 Veja os pacotes disponíveis:", reply_markup=teclado_catalogo())
             except Exception as e:
                 print(f"Erro ao reenviar para {chat_id}: {e}")
             time.sleep(0.3)
@@ -280,7 +283,14 @@ def mostrar_pacote(call):
 
     def _enviar_pacote(cid, cap, mk):
         try:
-            enviar_video2(cid, caption=cap)
+            if VIDEO2_FILE_ID:
+                bot.send_video(cid, VIDEO2_FILE_ID, caption=cap)
+            elif VIDEO2:
+                with open(VIDEO2, "rb") as v:
+                    resp = bot.send_video(cid, v, caption=cap, timeout=120)
+                    global VIDEO2_FILE_ID
+                    VIDEO2_FILE_ID = resp.video.file_id
+                    salvar_file_id_disco("video2", VIDEO2_FILE_ID)
         except Exception as e:
             print(f"Erro enviar_video2: {e}")
         try:
@@ -390,6 +400,12 @@ def liberar_acesso(message):
         bot.send_message(message.chat.id, f"❌ Erro ao enviar: {e}")
 
 print("✅ Bot iniciado com sucesso!")
-bot.remove_webhook()
-time.sleep(1)
-bot.infinity_polling(timeout=20, long_polling_timeout=20, skip_pending=True)
+
+while True:
+    try:
+        bot.remove_webhook()
+        time.sleep(2)
+        bot.infinity_polling(timeout=20, long_polling_timeout=20, skip_pending=True)
+    except Exception as e:
+        print(f"⚠️ Polling encerrado ({e}), reiniciando em 10s...")
+        time.sleep(10)
