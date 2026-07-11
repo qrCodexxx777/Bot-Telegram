@@ -214,11 +214,12 @@ def meu_id(message):
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     usuarios.add(message.chat.id)
-    enviar_video1(
-        message.chat.id,
-        caption=TEXTO_BOAS_VINDAS,
-        reply_markup=teclado_catalogo()
-    )
+    threading.Thread(
+        target=enviar_video1,
+        args=(message.chat.id, TEXTO_BOAS_VINDAS),
+        kwargs={"reply_markup": teclado_catalogo()},
+        daemon=True
+    ).start()
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("ver_"))
 def mostrar_pacote(call):
@@ -238,8 +239,12 @@ def mostrar_pacote(call):
         InlineKeyboardButton(f"❎ Não quero — {valor_sem}", callback_data=f"comprar_nao_{key}")
     )
 
-    enviar_video2(call.message.chat.id, caption=f"{p['emoji']} *{p['nome']}*")
-    bot.send_message(call.message.chat.id, TEXTO_PACOTE, parse_mode="Markdown", reply_markup=markup)
+    chat_id_pacote = call.message.chat.id
+    nome_caption = f"{p['emoji']} *{p['nome']}*"
+    def _enviar_pacote():
+        enviar_video2(chat_id_pacote, caption=nome_caption)
+        bot.send_message(chat_id_pacote, TEXTO_PACOTE, parse_mode="Markdown", reply_markup=markup)
+    threading.Thread(target=_enviar_pacote, daemon=True).start()
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("comprar_sim_"))
 def pagamento_com(call):
