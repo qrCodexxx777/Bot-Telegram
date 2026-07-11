@@ -211,6 +211,43 @@ def meu_id(message):
         parse_mode="Markdown"
     )
 
+@bot.message_handler(commands=['fileids'])
+def ver_fileids(message):
+    if message.from_user.id != ADMIN_ID:
+        return
+    bot.send_message(
+        message.chat.id,
+        f"📦 FILE IDs em cache:\n\n"
+        f"v1: {VIDEO1_FILE_ID or 'None'}\n"
+        f"v2: {VIDEO2_FILE_ID or 'None'}\n"
+        f"v3: {VIDEO3_FILE_ID or 'None'}\n"
+        f"v4: {VIDEO4_FILE_ID or 'None'}"
+    )
+
+@bot.message_handler(commands=['setfileid'])
+def set_fileid(message):
+    if message.from_user.id != ADMIN_ID:
+        return
+    global VIDEO1_FILE_ID, VIDEO2_FILE_ID, VIDEO3_FILE_ID, VIDEO4_FILE_ID
+    partes = message.text.split()
+    if len(partes) < 3:
+        bot.send_message(message.chat.id, "Uso: /setfileid <1|2|3|4> <file_id>")
+        return
+    num, fid = partes[1], partes[2]
+    if num == "1":
+        VIDEO1_FILE_ID = fid
+        salvar_file_id_disco("video1", fid)
+    elif num == "2":
+        VIDEO2_FILE_ID = fid
+        salvar_file_id_disco("video2", fid)
+    elif num == "3":
+        VIDEO3_FILE_ID = fid
+        salvar_file_id_disco("video3", fid)
+    elif num == "4":
+        VIDEO4_FILE_ID = fid
+        salvar_file_id_disco("video4", fid)
+    bot.send_message(message.chat.id, f"✅ video{num} file_id salvo!")
+
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     usuarios.add(message.chat.id)
