@@ -282,13 +282,13 @@ def mostrar_pacote(call):
     )
 
     def _enviar_pacote(cid, cap, mk):
+        global VIDEO2_FILE_ID
         try:
             if VIDEO2_FILE_ID:
                 bot.send_video(cid, VIDEO2_FILE_ID, caption=cap)
             elif VIDEO2:
                 with open(VIDEO2, "rb") as v:
                     resp = bot.send_video(cid, v, caption=cap, timeout=120)
-                    global VIDEO2_FILE_ID
                     VIDEO2_FILE_ID = resp.video.file_id
                     salvar_file_id_disco("video2", VIDEO2_FILE_ID)
         except Exception as e:
