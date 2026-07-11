@@ -232,6 +232,8 @@ def mostrar_pacote(call):
     p = pacote
     valor_com = formatar_valor(p["valor_base"] + p["acrescimo"])
     valor_sem = formatar_valor(p["valor_base"])
+    chat_id_pacote = call.message.chat.id
+    caption_video = f"{p['emoji']} {p['nome']}"
 
     markup = InlineKeyboardMarkup(row_width=1)
     markup.add(
@@ -239,12 +241,17 @@ def mostrar_pacote(call):
         InlineKeyboardButton(f"❎ Não quero — {valor_sem}", callback_data=f"comprar_nao_{key}")
     )
 
-    chat_id_pacote = call.message.chat.id
-    nome_caption = f"{p['emoji']} *{p['nome']}*"
-    def _enviar_pacote():
-        enviar_video2(chat_id_pacote, caption=nome_caption)
-        bot.send_message(chat_id_pacote, TEXTO_PACOTE, parse_mode="Markdown", reply_markup=markup)
-    threading.Thread(target=_enviar_pacote, daemon=True).start()
+    def _enviar_pacote(cid, cap, mk):
+        try:
+            enviar_video2(cid, caption=cap)
+        except Exception as e:
+            print(f"Erro enviar_video2: {e}")
+        try:
+            bot.send_message(cid, TEXTO_PACOTE, parse_mode="Markdown", reply_markup=mk)
+        except Exception as e:
+            print(f"Erro send_message pacote: {e}")
+
+    threading.Thread(target=_enviar_pacote, args=(chat_id_pacote, caption_video, markup), daemon=True).start()
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("comprar_sim_"))
 def pagamento_com(call):
